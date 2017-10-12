@@ -1,0 +1,4 @@
+data/opencv/**/*.jpg
+data/opencv/**/*.jpeg
+data/opencv/**/*.png
+data/opencv/**/*.bmp

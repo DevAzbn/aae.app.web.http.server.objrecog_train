@@ -1,0 +1,2 @@
+c:/OpenCV/build/x64/vc14/bin/opencv_createsamples.exe -info ./positives/default.txt -vec ./vectors/default.vec -w 20 -h 20 -num 200
+c:/OpenCV/build/x64/vc14/bin/opencv_traincascade.exe -data ./cascades/default/ -vec ./vectors/default.vec -bg ./negatives/default.txt -numStages 16 -minHitRate 0.925 -maxFalseAlarmRate 0.4 -numPos 160 -numNeg 200 -w 20 -h 20 -featureType LBP -precalcValBufSize 2048 -precalcIdxBufSize 2048 -acceptanceRatioBreakValue -1 -numThreads 4
