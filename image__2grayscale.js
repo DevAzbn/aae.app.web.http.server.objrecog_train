@@ -57,11 +57,11 @@ azbn.mdl('fs/tree').walk('./data/src/negatives/' + argv.type + '/', function(fil
 					
 					image.grayscale();
 					
-					if(image.bitmap.width > 800) {
-						image.resize(800, Jimp.AUTO);
+					if(image.bitmap.width > 960) {
+						image.resize(960, Jimp.AUTO);
 					}
 					
-					image.quality(75);
+					image.quality(81);
 					
 					/*
 					image.resize(Jimp.AUTO, 250);     // resize the height to 250 and scale the width accordingly
