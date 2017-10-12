@@ -77,8 +77,10 @@ azbn.mdl('fs/tree').walk('./data/src/positives/' + argv.type + '/', function(fil
 									0,//azbn.randint(0, 255),
 									0,//azbn.randint(0, 255),
 									0,//azbn.randint(0, 255),
-									255,//azbn.randint(0, 255)
+									255//azbn.randint(0, 255)
 								));
+								
+								image.flip((azbn.randint(2, 2) > 0 ? true : false), false);
 								
 								_image.rotate(azbn.randint(-argv.deg, argv.deg));
 								
