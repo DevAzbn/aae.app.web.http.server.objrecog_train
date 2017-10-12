@@ -9,13 +9,12 @@ var azbn = new require(__dirname + '/../../../../../../system/bootstrap')({
 var app = azbn.loadApp(module);
 
 var argv = require('optimist')
-	.usage('Usage: $0 --from=[Path to source-dir] --type=[Name of project or type of objects] --copies=[Max copies for image]')
+	.usage('Usage: $0 --type=[Name of project or type of objects] --copies=[Max copies for image]')
 	.default('deg', 21)
 	.default('copies', 10)
 	.default('type', 'default')
 	.demand([
 		'type',
-		'from',
 	])
 	.argv;
 
@@ -26,7 +25,7 @@ var files = [];
 var tasks = [];
 var result_files = [];
 
-azbn.mdl('fs/tree').walk(argv.from, function(file, stat){
+azbn.mdl('fs/tree').walk('./data/src/positives/' + argv.type + '/', function(file, stat){
 	
 	if (stat && stat.isDirectory()) {
 		

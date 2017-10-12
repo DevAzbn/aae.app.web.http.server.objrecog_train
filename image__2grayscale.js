@@ -9,8 +9,9 @@ var azbn = new require(__dirname + '/../../../../../../system/bootstrap')({
 var app = azbn.loadApp(module);
 
 var argv = require('optimist')
-	.usage('Usage: $0 --from=[Path to source-dir] --to=[Path to result-dir]')
-	.demand(['from', 'to'])
+	.usage('Usage: $0 --type=[Name of project or type of objects]')
+	.default('type', 'default')
+	.demand(['type'])
 	.argv;
 
 var Jimp = require('jimp');
@@ -19,7 +20,7 @@ var async = require('async');
 var files = [];
 var tasks = [];
 
-azbn.mdl('fs/tree').walk(argv.from, function(file, stat){
+azbn.mdl('fs/tree').walk('./data/src/negatives/' + argv.type + '/', function(file, stat){
 	
 	if (stat && stat.isDirectory()) {
 		
@@ -71,7 +72,7 @@ azbn.mdl('fs/tree').walk(argv.from, function(file, stat){
 					
 					var new_file = azbn.uuid.v4()  + '.' + image.getExtension();
 					
-					image.write(argv.to + '/' + new_file, function(_err){
+					image.write('./data/opencv/negatives/' + argv.type + '/' + new_file, function(_err){
 						azbn.echo(new_file);
 						callback(_err, null);
 					});
