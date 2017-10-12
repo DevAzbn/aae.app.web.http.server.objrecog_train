@@ -23,14 +23,16 @@ if(os.platform() == 'win32') {
 }
 
 var argv = require('optimist')
-	.usage('Usage: $0 --opencv=[Dir of opencv binaries] --type=[Name of project or type of objects] --w=[int] --h=[int] --pos_count=[Count of positive-items, int]')
+	.usage('Usage: $0 --opencv=[Dir of opencv binaries] --type=[Name of project or type of objects] --w=[int] --h=[int] --pos_count=[Count of positive-items, int] --stages=[Count of stages]')
 	.default('type', 'default')
+	.default('stages', 10)
 	.default('w', '20')
 	.default('h', '20')
 	//.default('pos_count', '8')
 	.default('opencv', 'c:/OpenCV/build/x64/vc14/bin')
 	.demand([
 		'type',
+		'stages',
 		'w',
 		'h',
 		'opencv',
@@ -101,13 +103,14 @@ azbn.mdl('fs/tree').walk('./data/opencv/negatives/' + argv.type, function(file, 
 			'./vectors/' + argv.type + '.vec',
 			'-bg',
 			'./negatives/' + argv.type + '.txt',
-			'-numStages 16',
+			'-numStages',
+			argv.stages,
 			'-minHitRate 0.925',
 			'-maxFalseAlarmRate 0.4',
 			'-numPos',
-			parseInt(parseFloat(argv.pos_count) * 0.8),
+			parseInt(parseFloat(argv.pos_count / argv.stages)),
 			'-numNeg',
-			argv.pos_count, // files__negative.length,
+			files__negative.length,
 			'-w',
 			argv.w,
 			'-h',
