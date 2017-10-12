@@ -79,7 +79,7 @@ azbn.mdl('fs/tree').walk('./data/src/negatives/' + argv.type + '/', function(fil
 						
 						image.quality(81);
 						
-						var new_file = azbn.uuid.v4()  + '.' + image.getExtension();
+						var new_file = azbn.uuid.v4()  + '.jpg';// + image.getExtension();
 						
 						image.write('./data/opencv/negatives/' + argv.type + '/' + new_file, function(_err){
 							
