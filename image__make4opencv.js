@@ -23,16 +23,16 @@ if(os.platform() == 'win32') {
 }
 
 var argv = require('optimist')
-	.usage('Usage: $0 --opencv=[Dir of opencv binaries] --type=[Name of project or type of objects] --w=[int] --h=[int] --numPos=[Count of positive-items, int] --stages=[Count of stages]')
+	.usage('Usage: $0 --opencv=[Dir of opencv binaries] --type=[Name of project or type of objects] --w=[int] --h=[int] --numPos=[Count of positive-items, int] --numStages=[Count of stages]')
 	.default('type', 'default')
-	.default('stages', 10)
+	.default('numStages', 10)
 	.default('w', '20')
 	.default('h', '20')
 	//.default('numPos', '8')
 	.default('opencv', 'c:/OpenCV/build/x64/vc14/bin')
 	.demand([
 		'type',
-		'stages',
+		'numStages',
 		'w',
 		'h',
 		'opencv',
@@ -101,22 +101,22 @@ azbn.mdl('fs/tree').walk('./data/opencv/negatives/' + argv.type, function(file, 
 		[
 			is_windows ? argv.opencv + '/' + 'opencv_traincascade.exe' : 'opencv_traincascade',
 			'-numStages',
-			argv.stages,
+			argv.numStages,
 			'-numPos',
-			parseInt(parseFloat(argv.numPos / argv.stages)),
+			parseInt(parseFloat(argv.numPos * 0.8)),
 			'-numNeg',
-			parseInt(parseFloat(argv.numPos / argv.stages)),//files__negative.length,
+			parseInt(parseFloat(files__negative.length * 0.8)),//files__negative.length,
 			'-w',
 			argv.w,
 			'-h',
 			argv.h,
 			'-minHitRate 0.925',
-			'-maxFalseAlarmRate 0.5',
+			'-maxFalseAlarmRate 0.15',
 			'-mode ALL',
 			'-featureType LBP',
 			'-acceptanceRatioBreakValue -1',
 			'-numThreads 4',
-			'-maxDepth 1',
+			'-maxDepth 3',
 			'-maxWeakCount 100',
 			'-precalcValBufSize 2048',
 			'-precalcIdxBufSize 2048',
