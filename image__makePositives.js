@@ -87,7 +87,6 @@ azbn.mdl('fs/tree').walk('./data/src/positives/' + argv.type + '/', function(fil
 								_image.rotate(azbn.randint(-argv.deg, argv.deg));
 								
 								var new_file = azbn.uuid.v4()  + '.bmp';
-								//var new_file = i + '-' + j + '.bmp';
 								
 								result_files.push([
 									argv.type + '/' + new_file,
