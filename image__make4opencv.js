@@ -23,12 +23,12 @@ if(os.platform() == 'win32') {
 }
 
 var argv = require('optimist')
-	.usage('Usage: $0 --opencv=[Dir of opencv binaries] --type=[Name of project or type of objects] --w=[int] --h=[int] --pos_count=[Count of positive-items, int] --stages=[Count of stages]')
+	.usage('Usage: $0 --opencv=[Dir of opencv binaries] --type=[Name of project or type of objects] --w=[int] --h=[int] --numPos=[Count of positive-items, int] --stages=[Count of stages]')
 	.default('type', 'default')
 	.default('stages', 10)
 	.default('w', '20')
 	.default('h', '20')
-	//.default('pos_count', '8')
+	//.default('numPos', '8')
 	.default('opencv', 'c:/OpenCV/build/x64/vc14/bin')
 	.demand([
 		'type',
@@ -36,7 +36,7 @@ var argv = require('optimist')
 		'w',
 		'h',
 		'opencv',
-		'pos_count',
+		'numPos',
 	])
 	.argv;
 
@@ -89,7 +89,7 @@ azbn.mdl('fs/tree').walk('./data/opencv/negatives/' + argv.type, function(file, 
 			'-h',
 			argv.h,
 			'-num',
-			argv.pos_count,
+			argv.numPos,
 			'-bgcolor',
 			0,
 			'-bgthresh',
@@ -103,9 +103,9 @@ azbn.mdl('fs/tree').walk('./data/opencv/negatives/' + argv.type, function(file, 
 			'-numStages',
 			argv.stages,
 			'-numPos',
-			parseInt(parseFloat(argv.pos_count / argv.stages)),
+			parseInt(parseFloat(argv.numPos / argv.stages)),
 			'-numNeg',
-			parseInt(parseFloat(argv.pos_count / argv.stages)),//files__negative.length,
+			parseInt(parseFloat(argv.numPos / argv.stages)),//files__negative.length,
 			'-w',
 			argv.w,
 			'-h',

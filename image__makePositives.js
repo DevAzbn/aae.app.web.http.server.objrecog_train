@@ -10,7 +10,7 @@ var app = azbn.loadApp(module);
 
 var argv = require('optimist')
 	.usage('Usage: $0 --type=[Name of project or type of objects] --copies=[Max copies for image]')
-	.default('deg', 10)
+	.default('deg', 9)
 	.default('copies', 100)
 	.default('type', 'default')
 	.demand([
@@ -77,7 +77,7 @@ azbn.mdl('fs/tree').walk('./data/src/positives/' + argv.type + '/', function(fil
 									0,//azbn.randint(0, 255),
 									0,//azbn.randint(0, 255),
 									0,//azbn.randint(0, 255),
-									255//azbn.randint(0, 255)
+									0//azbn.randint(0, 255)
 								));
 								
 								image.flip((azbn.randint(2, 2) > 0 ? true : false), false);

@@ -71,13 +71,13 @@ azbn.mdl('fs/tree').walk('./data/src/negatives/' + argv.type + '/', function(fil
 						
 					} else {
 						
-						image.grayscale();
+						//image.grayscale();
 						
 						if(image.bitmap.width > 800) {
 							image.resize(800, Jimp.AUTO);
 						}
 						
-						image.quality(81);
+						//image.quality(81);
 						
 						var new_file = azbn.uuid.v4()  + '.jpg';// + image.getExtension();
 						
