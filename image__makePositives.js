@@ -10,8 +10,8 @@ var app = azbn.loadApp(module);
 
 var argv = require('optimist')
 	.usage('Usage: $0 --type=[Name of project or type of objects] --copies=[Max copies for image]')
-	.default('deg', 21)
-	.default('copies', 10)
+	.default('deg', 10)
+	.default('copies', 100)
 	.default('type', 'default')
 	.demand([
 		'type',
