@@ -73,16 +73,34 @@ azbn.mdl('fs/tree').walk('./data/src/positives/' + argv.type + '/', function(fil
 						
 						(function(_image, _j){
 								
-								image.background(Jimp.rgbaToInt(
+								/*
+								_image.background(Jimp.rgbaToInt(
 									0,//azbn.randint(0, 255),
 									0,//azbn.randint(0, 255),
 									0,//azbn.randint(0, 255),
 									255//azbn.randint(0, 255)
 								));
 								
-								image.flip((azbn.randint(2, 2) > 0 ? true : false), false);
+								_image.flip((azbn.randint(2, 2) > 0 ? true : false), false);
 								
 								_image.rotate(azbn.randint(-argv.deg, argv.deg));
+								*/
+								
+								var _need_resize = azbn.randint(-5, 5) > 0 ? true : false;
+								var _need_flip = azbn.randint(-5, 5) > 0 ? true : false;
+								
+								if(_need_resize) {
+									var _r_scale = azbn.randint(128, 256);
+									_image.resize(_r_scale, _r_scale);
+								}
+								
+								if(_need_flip) {
+									_image.flip(true, false);
+								}
+								
+								//if(_gs) {
+								//	_image.greyscale();
+								//}
 								
 								var new_file = azbn.uuid.v4()  + '.bmp';
 								

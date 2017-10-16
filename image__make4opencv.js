@@ -26,8 +26,8 @@ var argv = require('optimist')
 	.usage('Usage: $0 --opencv=[Dir of opencv binaries] --type=[Name of project or type of objects] --w=[int] --h=[int] --numPos=[Count of positive-items, int] --numStages=[Count of stages]')
 	.default('type', 'default')
 	.default('numStages', 10)
-	.default('w', '20')
-	.default('h', '20')
+	.default('w', '32')
+	.default('h', '32')
 	//.default('numPos', '8')
 	.default('opencv', 'c:/OpenCV/build/x64/vc14/bin')
 	.demand([
@@ -93,7 +93,7 @@ azbn.mdl('fs/tree').walk('./data/opencv/negatives/' + argv.type, function(file, 
 			'-bgcolor',
 			0,
 			'-bgthresh',
-			0,
+			32,
 			'-maxxangle 1.1',
 			'-maxyangle 1.1',
 			'-maxzangle 0.5',
@@ -112,13 +112,13 @@ azbn.mdl('fs/tree').walk('./data/opencv/negatives/' + argv.type, function(file, 
 			'-h',
 			argv.h,
 			'-minHitRate 0.995',
-			'-maxFalseAlarmRate 0.15',
+			'-maxFalseAlarmRate 0.5',
 			'-mode ALL',
 			'-featureType LBP',
 			'-acceptanceRatioBreakValue -1',
 			'-numThreads 4',
-			'-maxDepth 3',
-			'-maxWeakCount 100',
+			'-maxDepth 8',
+			'-maxWeakCount 128',
 			'-precalcValBufSize 2048',
 			'-precalcIdxBufSize 2048',
 			//'-stageType BOOST',
