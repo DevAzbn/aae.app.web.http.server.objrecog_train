@@ -1,0 +1,2 @@
+opencv_createsamples -info ./positives/default.txt -vec ./vectors/default.vec -w 32 -h 32 -num 1300 -bgcolor 0 -bgthresh 255 -maxxangle 1.1 -maxyangle 1.1 -maxzangle 0.5
+opencv_traincascade -numStages 16 -numPos 1000 -numNeg 1000 -w 32 -h 32 -minHitRate 0.995 -maxFalseAlarmRate 0.5 -mode ALL -featureType LBP -acceptanceRatioBreakValue -1 -numThreads 4 -maxDepth 8 -maxWeakCount 128 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -data ./cascades/default/ -vec ./vectors/default.vec -bg ./negatives/default.txt

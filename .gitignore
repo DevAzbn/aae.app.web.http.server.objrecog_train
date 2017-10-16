@@ -3,3 +3,4 @@ data/**/*.jpeg
 data/**/*.png
 data/**/*.bmp
 data/**/*.vec
+data/**/*.xml

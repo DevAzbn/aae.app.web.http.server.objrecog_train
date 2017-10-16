@@ -63,6 +63,18 @@ azbn.mdl('fs/tree').walk('./data/opencv/negatives/' + argv.type, function(file, 
 			//files__negative.push(file_arr[1]);
 			
 			files__negative.push(file);
+
+			if (is_windows) {
+
+				files__negative.push(file);
+
+			} else {
+
+				var _file = './' + argv.type + '/' + path.basename(file);
+
+				files__negative.push(_file);
+
+			}
 			
 		}
 		
